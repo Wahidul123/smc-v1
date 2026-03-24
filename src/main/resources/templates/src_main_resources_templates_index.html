@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Sameeha Medical Centre</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div th:replace="layout :: ">
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Sameeha Medical Centre</h1>
+            <p>Your health is our priority. Get expert medical care from experienced professionals.</p>
+            <a href="/appointment" class="btn btn-primary">Book an Appointment</a>
+        </div>
+    </section>
+
+    <!-- Featured Doctors -->
+    <section class="featured-section">
+        <div class="container">
+            <h2>Our Doctors</h2>
+            <div class="grid grid-3" th:if="${doctors}">
+                <div class="card" th:each="doctor : ${doctors}">
+                    <img th:if="${doctor.profileImage}" th:src="${doctor.profileImage}" alt="Doctor">
+                    <h3 th:text="${doctor.doctorName}">Doctor Name</h3>
+                    <p th:text="${doctor.specialty}">Specialty</p>
+                    <p th:text="'Experience: ' + ${doctor.experienceYears} + ' years'">Experience</p>
+                    <a th:href="'/doctors/' + ${doctor.id}" class="btn btn-secondary">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Services -->
+    <section class="featured-section alternate">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="grid grid-3" th:if="${services}">
+                <div class="card" th:each="service : ${services}">
+                    <img th:if="${service.serviceImage}" th:src="${service.serviceImage}" alt="Service">
+                    <h3 th:text="${service.serviceName}">Service Name</h3>
+                    <p th:text="${service.shortDescription}">Description</p>
+                    <a th:href="'/services/' + ${service.id}" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured FAQs -->
+    <section class="featured-section" th:if="${featuredFaqs}">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item" th:each="faq : ${featuredFaqs}">
+                    <h4 th:text="${faq.question}">Question</h4>
+                    <p th:text="${faq.answer}">Answer</p>
+                </div>
+            </div>
+            <a href="/faq" class="btn btn-primary">View All FAQs</a>
+        </div>
+    </section>
+
+    </div>
+</body>
+</html>
