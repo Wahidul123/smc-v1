@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle} ?: 'Sameeha Medical Centre'">Sameeha Medical Centre</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="emergency-banner">
+        <div class="container">
+            <span>📞 Emergency Hotline: +91 9999900000 - Available 24/7</span>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo"><a href="/">Sameeha Medical Centre</a></h1>
+                <nav class="nav">
+                    <a href="/" th:classappend="${activeNav == 'home' ? 'active' : ''}">Home</a>
+                    <a href="/doctors" th:classappend="${activeNav == 'doctors' ? 'active' : ''}">Doctors</a>
+                    <a href="/services" th:classappend="${activeNav == 'services' ? 'active' : ''}">Services</a>
+                    <a href="/appointment" th:classappend="${activeNav == 'appointment' ? 'active' : ''}">Book Appointment</a>
+                    <a href="/faq" th:classappend="${activeNav == 'faq' ? 'active' : ''}">FAQ</a>
+                    <a href="/contact" th:classappend="${activeNav == 'contact' ? 'active' : ''}">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main th:fragment="content">
+        <!-- Content will be inserted here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Sameeha Medical Centre</h3>
+                    <p>Providing exceptional healthcare services with compassion and expertise. Your health is our priority.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/doctors">Our Doctors</a></li>
+                        <li><a href="/services">Medical Services</a></li>
+                        <li><a href="/appointment">Book Appointment</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>📞 +91 9999900000 (Emergency: 24/7)</p>
+                    <p>📧 info@sameehamedical.com</p>
+                    <p>📍 123 Healthcare Avenue<br>Medical District, City 12345</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Operating Hours</h4>
+                    <p><strong>Monday - Friday:</strong> 8:00 AM - 8:00 PM</p>
+                    <p><strong>Saturday:</strong> 9:00 AM - 5:00 PM</p>
+                    <p><strong>Sunday:</strong> Emergency Only</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span th:text="${#temporals.format(#dates.createNow(), 'yyyy')}"></span> Sameeha Medical Centre. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
